@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface-50 text-surface-900 font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-400;
+  }
+
+  ::selection {
+    @apply bg-primary-200 text-primary-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 bg-primary-600 text-white text-sm font-semibold rounded-xl
+           hover:bg-primary-700 active:bg-primary-800 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-150 shadow-primary focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 bg-white text-surface-700 text-sm font-semibold rounded-xl border border-surface-200
+           hover:bg-surface-50 hover:border-surface-300 active:bg-surface-100 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-150 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-xl
+           hover:bg-red-700 active:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 text-surface-600 text-sm font-medium rounded-lg
+           hover:bg-surface-100 hover:text-surface-900 active:bg-surface-200 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-all duration-150 focus:outline-none;
+  }
+
+  .input-field {
+    @apply w-full px-3.5 py-2.5 text-sm text-surface-900 bg-white border border-surface-200 rounded-xl
+           placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           transition-all duration-150 disabled:bg-surface-50 disabled:text-surface-500;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-surface-200 shadow-card;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover transition-all duration-300 cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-full;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-100 text-emerald-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-100 text-amber-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-100 text-red-700;
+  }
+
+  .badge-gray {
+    @apply badge bg-surface-100 text-surface-600;
+  }
+
+  .stat-card {
+    @apply card p-6 flex items-start gap-4;
+  }
+
+  .section-header {
+    @apply flex items-center justify-between mb-6;
+  }
+
+  .page-title {
+    @apply text-2xl font-display font-bold text-surface-900;
+  }
+
+  .page-subtitle {
+    @apply text-sm text-surface-500 mt-0.5;
+  }
+
+  .table-wrapper {
+    @apply overflow-x-auto rounded-xl border border-surface-200;
+  }
+
+  .table-base {
+    @apply w-full text-sm text-left;
+  }
+
+  .table-head {
+    @apply bg-surface-50 border-b border-surface-200;
+  }
+
+  .table-th {
+    @apply px-4 py-3 text-xs font-semibold text-surface-500 uppercase tracking-wider;
+  }
+
+  .table-td {
+    @apply px-4 py-3.5 text-surface-700 border-b border-surface-100 last-of-type:border-0;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-surface-600
+           hover:bg-white hover:text-surface-900 hover:shadow-sm transition-all duration-150 cursor-pointer;
+  }
+
+  .sidebar-item-active {
+    @apply sidebar-item bg-white text-primary-600 shadow-sm font-semibold;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+
+  .modal-box {
+    @apply bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-slide-up;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-surface-700 mb-1.5;
+  }
+
+  .role-admin {
+    @apply badge bg-violet-100 text-violet-700;
+  }
+
+  .role-teacher {
+    @apply badge bg-blue-100 text-blue-700;
+  }
+
+  .role-student {
+    @apply badge bg-emerald-100 text-emerald-700;
+  }
+
+  /* Chat styles */
+  .message-bubble-self {
+    @apply bg-primary-600 text-white rounded-2xl rounded-br-sm px-4 py-2.5 max-w-xs lg:max-w-md break-words;
+  }
+
+  .message-bubble-other {
+    @apply bg-white text-surface-800 rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-xs lg:max-w-md border border-surface-200 break-words;
+  }
+
+  .message-bubble-admin {
+    @apply bg-violet-50 text-violet-900 rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-xs lg:max-w-md border border-violet-200 break-words;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply bg-surface-200 animate-pulse rounded;
+  }
+
+  /* Priority badges */
+  .priority-urgent { @apply badge bg-red-100 text-red-700; }
+  .priority-high { @apply badge bg-orange-100 text-orange-700; }
+  .priority-normal { @apply badge bg-blue-100 text-blue-700; }
+  .priority-low { @apply badge bg-surface-100 text-surface-600; }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
